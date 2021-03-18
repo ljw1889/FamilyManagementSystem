@@ -16,7 +16,7 @@ public class MenuManager {
 		System.out.println("5. Show a Menu");
 		System.out.println("6. Exit ");
 		System.out.print("Select one number between 1-6: ");
-		num = input.nextInt();   //num 을 받아들이는 부분. (1-6부터 무슨 숫자를 받느냐에 따라 달라지게 세세팅 할것임)
+		num = input.nextInt();   //num 을 받아들이는 부분. (1-6부터 무슨 숫자를 받느냐에 따라 달라지게 세팅 할것임)
 		switch(num) {   // if 문을 써도 되 지만, swich 가 더 가독성이 좋아서 사용  +case에 break 를 걸어줘야 끝이난다, 아닌경우: 모든케이스를 진행)
 		case 1:
 			System.out.print("Name : ");
@@ -33,7 +33,7 @@ public class MenuManager {
 		case 4:
 			System.out.print("Name : ");
 			String name2 = input.next();  
-		}
+		} 	
 		}
 	}
 }

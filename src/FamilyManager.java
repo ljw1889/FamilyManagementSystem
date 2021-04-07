@@ -8,7 +8,7 @@ public class FamilyManager {
 		this.input = input;
 	}
 	ArrayList<Family> familys = new ArrayList<Family>(); //리스트로 여러명의 페밀리를 받을 공간을 만듦 
-	
+
 	public void addFamily() {
 		Family family = new Family();
 		System.out.print("Name : ");
@@ -19,14 +19,14 @@ public class FamilyManager {
 		family.birth = input.nextInt();
 		System.out.print("Adress : ");
 		family.adress = input.next();
-		
+
 		familys.add(family); // 리스트에 목록 추가
 	}
 	public void deleteFamily() {
 		System.out.print("Name : ");
 		String name = input.next();
 		int index = -1;
-		
+
 		for (int i =0; i <familys.size();i++) {
 			if (familys.get(i).name.equals(name)){
 				index = i; 
@@ -38,9 +38,9 @@ public class FamilyManager {
 			System.out.println("the family" + name+ "is deleted");
 		}
 		System.out.println("the family is deleted");
-		
+
 	}
-	
+
 	public void editFamily() {
 		System.out.print("Name : ");
 		String name = input.next();
@@ -57,7 +57,7 @@ public class FamilyManager {
 					System.out.println("5. Exit ");
 					System.out.print("Select one number between 1-5: ");
 					num = input.nextInt();   
-					
+
 					switch(num) { 
 					case 1:
 						System.out.print("Name : ");
@@ -82,7 +82,7 @@ public class FamilyManager {
 		} //for
 	}  //editFamily()
 
-	
+
 	public void viewFamilys() {
 		for (int i =0; i <familys.size();i++) {
 			familys.get(i).printInfo();

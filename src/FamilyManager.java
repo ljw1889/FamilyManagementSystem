@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import family.CousinFamily;
+import family.Family;
+import family.SecondFamily;
+import family.ThirdFamily;
+
 public class FamilyManager {
 	Scanner input;
 
@@ -10,25 +15,47 @@ public class FamilyManager {
 	ArrayList<Family> familys = new ArrayList<Family>(); //리스트로 여러명의 페밀리를 받을 공간을 만듦 
 
 	public void addFamily() {
-		Family family = new Family();
-		System.out.print("Name : ");
-		family.name = input.next();
-		System.out.print("Relation : ");
-		family.relation = input.next();
-		System.out.print("Birth : ");
-		family.birth = input.nextInt();
-		System.out.print("Adress : ");
-		family.adress = input.next();
-
-		familys.add(family); // 리스트에 목록 추가
+		int kind =0;
+		while (kind != 1 && kind != 2 && kind != 3 && kind != 4) {
+			System.out.println("1 for Parents");
+			System.out.println("2 for SecondsCousin");
+			System.out.println("3 for ThirdCousin");
+			System.out.println("4 for Cousin");
+			System.out.print("Select number for Family Kind : ");
+			kind = input.nextInt();
+			if (kind==1) {
+				Family family = new Family();
+				family.getUserInput(input);
+				familys.add(family);
+			}
+			else if (kind==2) {
+				Family family = new SecondFamily();
+				family.getUserInput(input);
+				familys.add(family);
+			}
+			else if (kind==3) {
+				Family family = new ThirdFamily();
+				family.getUserInput(input);
+				familys.add(family);
+			}
+			else if (kind==4) {
+				Family family = new CousinFamily();
+				family.getUserInput(input);
+				familys.add(family);
+			}
+			else {
+				System.out.print("Select number for Family Kind : ");
+			}
+		}
 	}
+
 	public void deleteFamily() {
 		System.out.print("Name : ");
 		String name = input.next();
 		int index = -1;
 
 		for (int i =0; i <familys.size();i++) {
-			if (familys.get(i).name.equals(name)){
+			if (familys.get(i).getName().equals(name)){
 				index = i; 
 				break; // for 문을 나감
 			}
@@ -37,8 +64,6 @@ public class FamilyManager {
 			familys.remove(index);
 			System.out.println("the family" + name+ "is deleted");
 		}
-		System.out.println("the family is deleted");
-
 	}
 
 	public void editFamily() {
@@ -46,7 +71,7 @@ public class FamilyManager {
 		String name = input.next();
 		for (int i =0; i <familys.size();i++) {
 			Family family = familys.get(i);
-			if (family.name.equals(name)){
+			if (family.getName().equals(name)){
 				int num = -1;
 				while (num != 5) {
 					System.out.println("*** Family Management System Menu ***");
@@ -61,19 +86,19 @@ public class FamilyManager {
 					switch(num) { 
 					case 1:
 						System.out.print("Name : ");
-						family.name = input.next();
+						familys.get(i).setName(input.next());
 						break;
 					case 2:
 						System.out.print("Relation : ");
-						family.relation = input.next();
+						familys.get(i).setRelation(input.next());
 						break;
 					case 3:
 						System.out.print("Birth : ");
-						family.birth = input.nextInt();
+						familys.get(i).setBirth(input.nextInt());
 						break;
 					case 4:
 						System.out.print("Adress : ");
-						family.adress = input.next();
+						familys.get(i).setAdress(input.next());
 						break;
 					} 	//switch
 				} //while

@@ -13,7 +13,7 @@ public class MenuManager {
 			System.out.println("1. Add Family");
 			System.out.println("2. Delete Family");
 			System.out.println("3. Edit Family");
-			System.out.println("4. View Family");
+			System.out.println("4. View Familys");
 			System.out.println("5. Exit ");
 			System.out.print("Select one number between 1-5: ");
 			num = input.nextInt();   //num 을 받아들이는 부분. (1-6부터 무슨 숫자를 받느냐에 따라 달라지게 세팅 할것임)
@@ -28,7 +28,7 @@ public class MenuManager {
 				familyManager.editFamily();
 				break;
 			case 4:
-				familyManager.viewFamily();
+				familyManager.viewFamilys();
 				break;
 			} 	
 		}

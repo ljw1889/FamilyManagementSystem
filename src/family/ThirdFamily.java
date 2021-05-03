@@ -3,6 +3,11 @@ package family;
 import java.util.Scanner;
 
 public class ThirdFamily extends Family {
+	
+	public ThirdFamily(FamilyKind kind){ 
+		this.kind = kind;           //super(kind) 이거 대체.
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("Name : ");
 		String name = input.next();

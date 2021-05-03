@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import family.CousinFamily;
 import family.Family;
+import family.FamilyKind;
 import family.SecondFamily;
 import family.ThirdFamily;
 
@@ -17,7 +18,7 @@ public class FamilyManager {
 	public void addFamily() {
 		int kind =0;
 		while (kind != 1 && kind != 2 && kind != 3 && kind != 4) {
-			System.out.println("1 for Parents");
+			System.out.println("1 for Family");
 			System.out.println("2 for SecondsCousin");
 			System.out.println("3 for ThirdCousin");
 			System.out.println("4 for Cousin");
@@ -29,17 +30,17 @@ public class FamilyManager {
 				familys.add(family);
 			}
 			else if (kind==2) {
-				Family family = new SecondFamily();
+				Family family = new SecondFamily(FamilyKind.SecondCousin);
 				family.getUserInput(input);
 				familys.add(family);
 			}
 			else if (kind==3) {
-				Family family = new ThirdFamily();
+				Family family = new ThirdFamily(FamilyKind.ThirdCousin);
 				family.getUserInput(input);
 				familys.add(family);
 			}
 			else if (kind==4) {
-				Family family = new CousinFamily();
+				Family family = new CousinFamily(FamilyKind.Cousin);
 				family.getUserInput(input);
 				familys.add(family);
 			}

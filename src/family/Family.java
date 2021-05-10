@@ -1,9 +1,9 @@
 package family;
 import java.util.Scanner;
 
-public class Family {
+public abstract class Family {
 
-	protected FamilyKind kind = FamilyKind.ThirdCousin; // Default °ªÀ¸·Î »ïÃÌ.
+	protected FamilyKind kind = FamilyKind.SecondCousin; // Default °ªÀ¸·Î »ïÃÌ.
 
 	protected String name;
 	protected String relation;
@@ -82,38 +82,39 @@ public class Family {
 		this.adress = adress;
 	}
 
-	public void printInfo() {
-		String fkind = "none";
-		switch(this.kind) {
-		case SecondCousin :
-			fkind = "SecondCousin";
-			break;
-		case ThirdCousin :
-			fkind = "ThirdCousin";
-			break;
-		case Cousin :
-			fkind = "Cousin";
-			break;
-		default:
-		}
-		System.out.println("kind : "+ fkind + "name : "+this.name +"\n"+"relation : "+ this.relation+ "\n"+ "birth : "+this.birth+"\n"+"adress : "+ this.adress+"\n");                              
-	}
+	public abstract void printInfo();
+//	public void printInfo() {
+//		String fkind = "none";
+//		switch(this.kind) {
+//		case SecondCousin :
+//			fkind = "SecondCousin";
+//			break;
+//		case ThirdCousin :
+//			fkind = "ThirdCousin";
+//			break;
+//		case Cousin :
+//			fkind = "Cousin";
+//			break;
+//		default:
+//		}
+//		System.out.println("kind : "+ fkind + "name : "+this.name +"\n"+"relation : "+ this.relation+ "\n"+ "birth : "+this.birth+"\n"+"adress : "+ this.adress+"\n");                              
+//	}
 
-	public void getUserInput(Scanner input) {
-		System.out.print("Name : ");
-		String name = input.next();
-		this.setName(name);
-
-		System.out.print("Relation : ");
-		String relation = input.next();
-		this.setRelation(relation);
-
-		System.out.print("Birth : ");
-		int birth = input.nextInt();
-		this.setBirth(birth);
-
-		System.out.print("Adress : ");
-		String adress = input.next();
-		this.setAdress(adress);
-	}
+//	public void getUserInput(Scanner input) {
+//		System.out.print("Name : ");
+//		String name = input.next();
+//		this.setName(name);
+//
+//		System.out.print("Relation : ");
+//		String relation = input.next();
+//		this.setRelation(relation);
+//
+//		System.out.print("Birth : ");
+//		int birth = input.nextInt();
+//		this.setBirth(birth);
+//
+//		System.out.print("Adress : ");
+//		String adress = input.next();
+//		this.setAdress(adress);
+//	}
 }

@@ -2,7 +2,7 @@ package family;
 
 import java.util.Scanner;
 
-public class CousinFamily extends Family {
+public class CousinFamily extends Family implements FamilyInput {
 	protected int phone;
 	
 	public int getPhone() {

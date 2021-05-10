@@ -2,7 +2,7 @@ package family;
 
 import java.util.Scanner;
 
-public class ThirdFamily extends Family {
+public class ThirdFamily extends Family implements FamilyInput {
 	
 	public ThirdFamily(FamilyKind kind){ 
 		this.kind = kind;           //super(kind) 이거 대체.
@@ -29,7 +29,7 @@ public class ThirdFamily extends Family {
 			}
 			else if (answer == 'n' || answer == 'N') {
 				this.setBirth(000000);
-				break;
+				break;																	
 			}
 			else {
 			}
@@ -37,5 +37,22 @@ public class ThirdFamily extends Family {
 		System.out.print("Adress : ");
 		String adress = input.next();
 		this.setAdress(adress);
+	}
+	
+	public void printInfo() {
+		String fkind = "none";
+		switch(this.kind) {
+		case SecondCousin :
+			fkind = "SecondCousin";
+			break;
+		case ThirdCousin :
+			fkind = "ThirdCousin";
+			break;
+		case Cousin :
+			fkind = "Cousin";
+			break;
+		default:
+		}
+		System.out.println("kind : "+ fkind + "name : "+this.name +"\n"+"relation : "+ this.relation+ "\n"+ "birth : "+this.birth+"\n"+"adress : "+ this.adress+"\n");                              
 	}
 }

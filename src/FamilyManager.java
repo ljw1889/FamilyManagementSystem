@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import family.CousinFamily;
 import family.Family;
+import family.FamilyInput;
 import family.FamilyKind;
 import family.SecondFamily;
 import family.ThirdFamily;
@@ -13,37 +14,38 @@ public class FamilyManager {
 	FamilyManager(Scanner input){
 		this.input = input;
 	}
-	ArrayList<Family> familys = new ArrayList<Family>(); //리스트로 여러명의 페밀리를 받을 공간을 만듦 
+	ArrayList<FamilyInput> familys = new ArrayList<FamilyInput>(); //리스트로 여러명의 페밀리를 받을 공간을 만듦 
 
 	public void addFamily() {
 		int kind =0;
+		FamilyInput familyInput;
 		while (kind != 1 && kind != 2 && kind != 3 && kind != 4) {
-			System.out.println("1 for Family");
-			System.out.println("2 for SecondsCousin");
-			System.out.println("3 for ThirdCousin");
-			System.out.println("4 for Cousin");
+		//em.out.println("1 for Family");
+			System.out.println("1 for SecondsCousin");
+			System.out.println("2 for ThirdCousin");
+			System.out.println("3 for Cousin");
 			System.out.print("Select number for Family Kind : ");
 			kind = input.nextInt();
-			if (kind==1) {
-				Family family = new Family();
-				family.getUserInput(input);
-				familys.add(family);
+			if (kind==1) { 
+				familyInput = new SecondFamily(FamilyKind.SecondCousin);
+				familyInput.getUserInput(input);
+				familys.add(familyInput);
 			}
 			else if (kind==2) {
-				Family family = new SecondFamily(FamilyKind.SecondCousin);
-				family.getUserInput(input);
-				familys.add(family);
+				familyInput = new ThirdFamily(FamilyKind.ThirdCousin);
+				familyInput.getUserInput(input);
+				familys.add(familyInput);
 			}
 			else if (kind==3) {
-				Family family = new ThirdFamily(FamilyKind.ThirdCousin);
-				family.getUserInput(input);
-				familys.add(family);
+				familyInput = new CousinFamily(FamilyKind.Cousin);
+				familyInput.getUserInput(input);
+				familys.add(familyInput);
 			}
-			else if (kind==4) {
-				Family family = new CousinFamily(FamilyKind.Cousin);
-				family.getUserInput(input);
-				familys.add(family);
-			}
+		/*	else if (kind==4) {
+				familyInput = new Family();
+				familyInput.getUserInput(input);
+				familys.add(familyInput);
+			}*/
 			else {
 				System.out.print("Select number for Family Kind : ");
 			}
@@ -71,8 +73,8 @@ public class FamilyManager {
 		System.out.print("Name : ");
 		String name = input.next();
 		for (int i =0; i <familys.size();i++) {
-			Family family = familys.get(i);
-			if (family.getName().equals(name)){
+			FamilyInput familyinput = familys.get(i);
+			if (familyinput.getName().equals(name)){
 				int num = -1;
 				while (num != 5) {
 					System.out.println("*** Family Management System Menu ***");
@@ -112,6 +114,6 @@ public class FamilyManager {
 	public void viewFamilys() {
 		for (int i =0; i <familys.size();i++) {
 			familys.get(i).printInfo();
-		}
+		} 
 	}
 }

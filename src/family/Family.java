@@ -1,7 +1,7 @@
 package family;
 import java.util.Scanner;
 
-public abstract class Family {
+public abstract class Family implements FamilyInput {
 
 	protected FamilyKind kind = FamilyKind.SecondCousin; // Default °ªÀ¸·Î »ïÃÌ.
 
@@ -9,7 +9,9 @@ public abstract class Family {
 	protected String relation;
 	protected int birth;
 	protected String adress;
+	protected int phone;
 
+	
 	public Family(){ 
 	}
 	
@@ -81,40 +83,51 @@ public abstract class Family {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
+	public int getPhone() {			//second, cousin
+		return phone;
+	}
 
-	public abstract void printInfo();
-//	public void printInfo() {
-//		String fkind = "none";
-//		switch(this.kind) {
-//		case SecondCousin :
-//			fkind = "SecondCousin";
-//			break;
-//		case ThirdCousin :
-//			fkind = "ThirdCousin";
-//			break;
-//		case Cousin :
-//			fkind = "Cousin";
-//			break;
-//		default:
-//		}
-//		System.out.println("kind : "+ fkind + "name : "+this.name +"\n"+"relation : "+ this.relation+ "\n"+ "birth : "+this.birth+"\n"+"adress : "+ this.adress+"\n");                              
-//	}
+	public void setPhone(int phone) {		//second, cousin
+		this.phone = phone;
+	}
 
-//	public void getUserInput(Scanner input) {
-//		System.out.print("Name : ");
-//		String name = input.next();
-//		this.setName(name);
-//
-//		System.out.print("Relation : ");
-//		String relation = input.next();
-//		this.setRelation(relation);
-//
-//		System.out.print("Birth : ");
-//		int birth = input.nextInt();
-//		this.setBirth(birth);
-//
-//		System.out.print("Adress : ");
-//		String adress = input.next();
-//		this.setAdress(adress);
-//	}
+	public abstract void printInfo();	
+	
+	public void setName(Scanner input) {
+		System.out.print("Name : ");
+		this.setName(input.next()); 
+	}
+	public void setRelation(Scanner input) {
+		System.out.print("Relation : ");
+		this.setRelation(input.next());
+	}
+	public void setBirth(Scanner input) {
+		System.out.print("Birth : ");
+		this.setBirth(input.nextInt());
+	}
+	public void setAdress(Scanner input) {
+		System.out.print("Adress : ");
+		this.setAdress(input.next());
+	}
+	public void setPhone(Scanner input) {	//second, cousin
+		System.out.print("Phone : ");
+		this.setPhone(input.nextInt());
+	}
+	
+	public String getKindFamily() {
+		String fkind = "none";
+		switch(this.kind) {
+		case SecondCousin :
+			fkind = "SecondCousin";
+			break;
+		case ThirdCousin :
+			fkind = "ThirdCousin";
+			break;
+		case Cousin :
+			fkind = "Cousin";
+			break;
+		default:
+		}
+		return fkind;
+	}
 }

@@ -8,19 +8,16 @@ import family.FamilyKind;
 import family.SecondFamily;
 import family.ThirdFamily;
 
-public class FamilyManager {
-	Scanner input;
-
-	FamilyManager(Scanner input){
+public class FamilyManager  {
+	Scanner input; 	//생성자로 바로 받음.
+	FamilyManager(Scanner input){		//생성자
 		this.input = input;
 	}
 	ArrayList<FamilyInput> familys = new ArrayList<FamilyInput>(); //리스트로 여러명의 페밀리를 받을 공간을 만듦 
-
 	public void addFamily() {
 		int kind =0;
 		FamilyInput familyInput;
 		while (kind != 1 && kind != 2 && kind != 3 && kind != 4) {
-		//em.out.println("1 for Family");
 			System.out.println("1 for SecondsCousin");
 			System.out.println("2 for ThirdCousin");
 			System.out.println("3 for Cousin");
@@ -41,11 +38,6 @@ public class FamilyManager {
 				familyInput.getUserInput(input);
 				familys.add(familyInput);
 			}
-		/*	else if (kind==4) {
-				familyInput = new Family();
-				familyInput.getUserInput(input);
-				familys.add(familyInput);
-			}*/
 			else {
 				System.out.print("Select number for Family Kind : ");
 			}
@@ -55,6 +47,10 @@ public class FamilyManager {
 	public void deleteFamily() {
 		System.out.print("Name : ");
 		String name = input.next();
+		int index = findIndex(name);	//리팩토링
+		removefromFamily(index,name);	//리팩토링
+	}	
+	public int findIndex(String name) {	//리팩토링 함수
 		int index = -1;
 
 		for (int i =0; i <familys.size();i++) {
@@ -63,6 +59,9 @@ public class FamilyManager {
 				break; // for 문을 나감
 			}
 		}
+		return index;
+	}
+	public void removefromFamily(int index,String name) { 	//리팩토링 함수
 		if (index>=0) {          // index가 0 보다 크면 학생을 찾은거다.
 			familys.remove(index);
 			System.out.println("the family" + name+ "is deleted");
@@ -73,36 +72,28 @@ public class FamilyManager {
 		System.out.print("Name : ");
 		String name = input.next();
 		for (int i =0; i <familys.size();i++) {
-			FamilyInput familyinput = familys.get(i);
-			if (familyinput.getName().equals(name)){
+			FamilyInput family = familys.get(i);
+			if (family.getName().equals(name)){
 				int num = -1;
 				while (num != 5) {
-					System.out.println("*** Family Management System Menu ***");
-					System.out.println("1. Edit Name");
-					System.out.println("2. Edit Relation");
-					System.out.println("3. Edit Birth");
-					System.out.println("4. Edit Adress");
-					System.out.println("5. Exit ");
-					System.out.print("Select one number between 1-5: ");
+					showEditMenu();
 					num = input.nextInt();   
 
 					switch(num) { 
 					case 1:
-						System.out.print("Name : ");
-						familys.get(i).setName(input.next());
+						family.setName(input);
 						break;
 					case 2:
-						System.out.print("Relation : ");
-						familys.get(i).setRelation(input.next());
+						family.setRelation(input);
 						break;
 					case 3:
-						System.out.print("Birth : ");
-						familys.get(i).setBirth(input.nextInt());
+						family.setBirth(input);
 						break;
 					case 4:
-						System.out.print("Adress : ");
-						familys.get(i).setAdress(input.next());
-						break;
+						family.setAdress(input);
+						break;  
+					default:
+						continue;
 					} 	//switch
 				} //while
 				break;
@@ -115,5 +106,15 @@ public class FamilyManager {
 		for (int i =0; i <familys.size();i++) {
 			familys.get(i).printInfo();
 		} 
+	}
+
+	public void showEditMenu() {
+		System.out.println("*** Family Management System Menu ***");
+		System.out.println("1. Edit Name");
+		System.out.println("2. Edit Relation");
+		System.out.println("3. Edit Birth");
+		System.out.println("4. Edit Adress");
+		System.out.println("5. Exit ");
+		System.out.print("Select one number between 1-5: ");
 	}
 }

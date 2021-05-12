@@ -18,4 +18,9 @@ public interface FamilyInput {
 	
 	public void getUserInput(Scanner input);
 	
+	public void setName(Scanner input);
+	public void setRelation(Scanner input);
+	public void setBirth(Scanner input);
+	public void setAdress(Scanner input);
+	public void setPhone(Scanner input);
 }

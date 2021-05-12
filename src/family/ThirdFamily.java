@@ -2,57 +2,21 @@ package family;
 
 import java.util.Scanner;
 
-public class ThirdFamily extends Family implements FamilyInput {
+public class ThirdFamily extends TCFamily {
 	
 	public ThirdFamily(FamilyKind kind){ 
-		this.kind = kind;           //super(kind) 이거 대체.
+		super(kind);
+		//this.kind = kind;           //super(kind) 와 차이점이 무엇이지?
 	}
-	
 	public void getUserInput(Scanner input) {
-		System.out.print("Name : ");
-		String name = input.next();
-		this.setName(name);
-
-		System.out.print("Relation : ");
-		String relation = input.next();
-		this.setRelation(relation);
-
-		char answer = 'q';
-		while (true) {
-			System.out.print("Do you Know Birth? (Y/N) : ");
-			answer = input.next().charAt(0);
-			if (answer == 'y' || answer == 'Y') {
-				System.out.print("Birth : ");
-				int birth = input.nextInt();
-				this.setBirth(birth);
-				break;
-			}
-			else if (answer == 'n' || answer == 'N') {
-				this.setBirth(000000);
-				break;																	
-			}
-			else {
-			}
-		}
-		System.out.print("Adress : ");
-		String adress = input.next();
-		this.setAdress(adress);
+		setName(input);
+		setRelation(input);
+		setFamilyBirthwithYN(input);
+		setAdress(input);
 	}
 	
 	public void printInfo() {
-		String fkind = "none";
-		switch(this.kind) {
-		case SecondCousin :
-			fkind = "SecondCousin";
-			break;
-		case ThirdCousin :
-			fkind = "ThirdCousin";
-			break;
-		case Cousin :
-			fkind = "Cousin";
-			break;
-		default:
-		}
+		String fkind = getKindFamily();
 		System.out.println("kind : "+ fkind + "name : "+this.name +"\n"+"relation : "+ this.relation+ "\n"+ "birth : "+this.birth+"\n"+"adress : "+ this.adress+"\n");                              
 	}
 }

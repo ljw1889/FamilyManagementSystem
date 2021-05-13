@@ -3,13 +3,13 @@ package family;
 import java.util.Scanner;
 
 public class CousinFamily extends TCFamily {
-	protected int phone;
+	protected String phone;
 	
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	

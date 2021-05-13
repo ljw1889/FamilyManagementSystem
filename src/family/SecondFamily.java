@@ -3,15 +3,15 @@ package family;
 import java.util.Scanner;
 
 public class SecondFamily extends Family {  //형제,자매
-	protected int phone;
-	
-	public int getPhone() {
-		return phone;
-	}
-
-	public void setPhone(int phone) {
-		this.phone = phone;
-	}
+//	protected String phone;
+//	
+//	public String getPhone() {
+//		return phone;
+//	}
+//
+//	public void setPhone(String phone) {
+//		this.phone = phone;
+//	}
 
 	public SecondFamily(FamilyKind kind){ 
 		this.kind = kind;        

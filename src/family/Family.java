@@ -1,6 +1,8 @@
 package family;
 import java.util.Scanner;
 
+import exceptions.PhoneFormatException;
+
 public abstract class Family implements FamilyInput {
 
 	protected FamilyKind kind = FamilyKind.SecondCousin; // Default °ªÀ¸·Î »ïÃÌ.
@@ -9,12 +11,12 @@ public abstract class Family implements FamilyInput {
 	protected String relation;
 	protected int birth;
 	protected String adress;
-	protected int phone;
+	protected String phone;
 
-	
+
 	public Family(){ 
 	}
-	
+
 	public Family(FamilyKind kind){ 
 		this.kind = kind;
 	}
@@ -83,16 +85,19 @@ public abstract class Family implements FamilyInput {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-	public int getPhone() {			//second, cousin
+	public String getPhone() {			//second, cousin
 		return phone;
 	}
 
-	public void setPhone(int phone) {		//second, cousin
+	public void setPhone(String phone) throws PhoneFormatException {		//second, cousin	
+		if(!phone.contains("-") && !phone.equals("")) {
+			throw new PhoneFormatException();
+		}
 		this.phone = phone;
 	}
 
 	public abstract void printInfo();	
-	
+
 	public void setName(Scanner input) {
 		System.out.print("Name : ");
 		this.setName(input.next()); 
@@ -110,10 +115,19 @@ public abstract class Family implements FamilyInput {
 		this.setAdress(input.next());
 	}
 	public void setPhone(Scanner input) {	//second, cousin
-		System.out.print("Phone : ");
-		this.setPhone(input.nextInt());
+		String phone = "";
+		while(!phone.contains("-")) {
+			System.out.print("Phone : ");
+			phone = input.next();
+			try {
+				this.setPhone(phone);
+			} catch (PhoneFormatException e) {
+				System.out.println("Incorrect Phone Format -> Contain '-' ");
+			//	e.printStackTrace();
+			}
+		}
 	}
-	
+
 	public String getKindFamily() {
 		String fkind = "none";
 		switch(this.kind) {

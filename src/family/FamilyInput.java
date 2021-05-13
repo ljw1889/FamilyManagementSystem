@@ -2,6 +2,8 @@ package family;
 
 import java.util.Scanner;
 
+import exceptions.PhoneFormatException;
+
 public interface FamilyInput {
 	
 	public String getName();
@@ -13,6 +15,8 @@ public interface FamilyInput {
 	public void setBirth(int birth);
 	
 	public void setAdress(String adress);
+	
+	public void setPhone(String phone) throws PhoneFormatException;
 	
 	public void printInfo();
 	

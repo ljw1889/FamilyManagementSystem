@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import family.CousinFamily;
@@ -17,7 +18,8 @@ public class FamilyManager  {
 	public void addFamily() {
 		int kind =0;
 		FamilyInput familyInput;
-		while (kind != 1 && kind != 2 && kind != 3 && kind != 4) {
+		while (kind != 1 && kind != 2 && kind != 3 ) {
+			try {
 			System.out.println("1 for SecondsCousin");
 			System.out.println("2 for ThirdCousin");
 			System.out.println("3 for Cousin");
@@ -40,6 +42,13 @@ public class FamilyManager  {
 			}
 			else {
 				System.out.print("Select number for Family Kind : ");
+			}}
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 to 3 !");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}

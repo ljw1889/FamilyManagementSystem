@@ -56,5 +56,4 @@ public abstract class TCFamily extends Family {
 		String fkind = getKindFamily();
 		System.out.println("kind : "+ fkind + "name : "+this.name +"\n"+"relation : "+ this.relation+ "\n"+ "birth : "+this.birth+"\n"+"adress : "+ this.adress+"\n" + "phone : " + this.phone +"\n");                              
 	}
-
 }

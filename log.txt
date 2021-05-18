@@ -1,0 +1,2 @@
+5월 19, 2021 1:31:07 오전 log.EventLogger log
+정보: view a list of family

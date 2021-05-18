@@ -1,9 +1,15 @@
 package family;
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exceptions.PhoneFormatException;
 
-public abstract class Family implements FamilyInput {
+public abstract class Family implements FamilyInput,Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5552807900255596794L;
 
 	protected FamilyKind kind = FamilyKind.SecondCousin; // Default °ªÀ¸·Î »ïÃÌ.
 

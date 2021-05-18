@@ -1,16 +1,20 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import family.CousinFamily;
-import family.Family;
 import family.FamilyInput;
 import family.FamilyKind;
 import family.SecondFamily;
 import family.ThirdFamily;
 
-public class FamilyManager  {
-	Scanner input; 	//생성자로 바로 받음.
+public class FamilyManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2412553903878265045L;
+	transient Scanner input; 	//생성자로 바로 받음.
 	FamilyManager(Scanner input){		//생성자
 		this.input = input;
 	}

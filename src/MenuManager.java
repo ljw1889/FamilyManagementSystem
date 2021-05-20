@@ -12,17 +12,25 @@ import log.EventLogger;
 public class MenuManager {
 	static EventLogger logger = new EventLogger("log.txt");	//로그를 관리하는 로거를 생성함. , static 으로 한번 실행한거에서 계속 쓸 수 있게
 	public static void main(String[] args) {
- 
-		Scanner input = new Scanner(System.in);
-		FamilyManager familyManager = getObject("Familymanager.ser");
-		if(familyManager == null ) {
+
+		Scanner input = new Scanner(System.in); 
+
+		FamilyManager familyManager = new FamilyManager(input);	//새로운 객체 생성
+		
+		familyManager = getObject("Familymanager.ser");	//객체에 오브젝트를 넣어줌.
+		if(familyManager == null ) {				//만약 그 오브젝트가 비어 있다면.
+//			System.out.println("fn :" + input);
 			familyManager = new FamilyManager(input);
+			selectMenu(input, familyManager);				
+			putObject(familyManager,"Familymanager.ser");
 		}
-
-		selectMenu(input, familyManager);					 // exception 포함.
-
-		putObject(familyManager,"Familymanager.ser");
-
+		else{
+//			System.out.println("f1 :" +input);
+			familyManager = getObject("Familymanager.ser");
+			familyManager.setInput(input);
+			selectMenu(input, familyManager);					 // exception 포함.
+			putObject(familyManager,"Familymanager.ser");
+		}
 	}
 
 	public static void selectMenu(Scanner input,FamilyManager familyManager) {
@@ -67,7 +75,7 @@ public class MenuManager {
 		System.out.println("3. Edit Family");
 		System.out.println("4. View Familys");
 		System.out.println("5. Exit ");
-		System.out.print("Select one number between 1-5: ");
+		System.out.println("Select one number between 1-5: ");
 	}
 	public static FamilyManager getObject(String filename) { 	//사용자 입장에서 오브젝트를 가져와서 이제 거기 내용을 쓸 수가 있는것임.
 		FamilyManager familyManager=null;	//패밀리 매니저 를 하나 만들고
@@ -77,6 +85,7 @@ public class MenuManager {
 			//input output : 파일 입장, 즉 나는 반대로 생각하면 됨 output은 내가 입력해서 파일에 적히는것
 			familyManager = (FamilyManager)in.readObject(); //read: 사용자 입장, 읽은 오브젝트를 형변환 시켜서 줌, 이제 이걸 리턴해서 여기 적는 내용으로 오브젝트에 로그 기록이 가능한 것임. 
 
+			
 			in.close();
 			file.close();
 

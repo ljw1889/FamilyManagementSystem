@@ -19,8 +19,9 @@ public class FamilyManager implements Serializable {
 		this.input = input;
 	}
 	ArrayList<FamilyInput> familys = new ArrayList<FamilyInput>(); //리스트로 여러명의 페밀리를 받을 공간을 만듦 
+	
 	public void addFamily() {
-		int kind =0;
+		int kind =-1;
 		FamilyInput familyInput;
 		while (kind != 1 && kind != 2 && kind != 3 ) {
 			try {
@@ -28,6 +29,9 @@ public class FamilyManager implements Serializable {
 			System.out.println("2 for ThirdCousin");
 			System.out.println("3 for Cousin");
 			System.out.print("Select number for Family Kind : ");
+			
+//			System.out.println(input);   
+			
 			kind = input.nextInt();
 			if (kind==1) { 
 				familyInput = new SecondFamily(FamilyKind.SecondCousin);
@@ -56,7 +60,7 @@ public class FamilyManager implements Serializable {
 			}
 		}
 	}
-
+	
 	public void deleteFamily() {
 		System.out.print("Name : ");
 		String name = input.next();
@@ -130,4 +134,8 @@ public class FamilyManager implements Serializable {
 		System.out.println("5. Exit ");
 		System.out.print("Select one number between 1-5: ");
 	}
+	public void setInput(Scanner input) {
+		this.input = input;
+	}
 }
+

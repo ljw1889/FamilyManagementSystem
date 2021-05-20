@@ -1,2 +1,4 @@
-5월 19, 2021 1:31:07 오전 log.EventLogger log
+5월 20, 2021 2:38:42 오후 log.EventLogger log
+정보: add a family
+5월 20, 2021 2:38:44 오후 log.EventLogger log
 정보: view a list of family

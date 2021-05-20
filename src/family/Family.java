@@ -5,7 +5,6 @@ import java.util.Scanner;
 import exceptions.PhoneFormatException;
 
 public abstract class Family implements FamilyInput,Serializable {
-
 	/**
 	 * 
 	 */
@@ -129,7 +128,7 @@ public abstract class Family implements FamilyInput,Serializable {
 				this.setPhone(phone);
 			} catch (PhoneFormatException e) {
 				System.out.println("Incorrect Phone Format -> Contain '-' ");
-			//	e.printStackTrace();
+				//	e.printStackTrace();
 			}
 		}
 	}

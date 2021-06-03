@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import family.CousinFamily;
+import family.Family;
 import family.FamilyInput;
 import family.FamilyKind;
 import family.SecondFamily;
@@ -15,6 +16,8 @@ public class FamilyManager implements Serializable {
 	 */
 	private static final long serialVersionUID = 2412553903878265045L;
 	transient Scanner input; 	//생성자로 바로 받음.
+	FamilyManager(){		//생성자
+	}
 	FamilyManager(Scanner input){		//생성자
 		this.input = input;
 	}
@@ -125,6 +128,14 @@ public class FamilyManager implements Serializable {
 		} 
 	}
 
+	public int size() {
+		return familys.size(); 
+	}
+	
+	public FamilyInput get(int index) {
+		return (Family) familys.get(index);
+	}
+	
 	public void showEditMenu() {
 		System.out.println("*** Family Management System Menu ***");
 		System.out.println("1. Edit Name");

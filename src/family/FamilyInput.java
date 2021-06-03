@@ -10,9 +10,15 @@ public interface FamilyInput {
 	
 	public void setName(String name);
 	
+	public String getRelation();
+	
 	public void setRelation(String relation);
 	
+	public int getBirth();
+	
 	public void setBirth(int birth);
+	
+	public String getAdress();
 	
 	public void setAdress(String adress);
 	

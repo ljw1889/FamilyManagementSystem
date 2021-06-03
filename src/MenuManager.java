@@ -1,3 +1,4 @@
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,25 +13,28 @@ import log.EventLogger;
 public class MenuManager {
 	static EventLogger logger = new EventLogger("log.txt");	//로그를 관리하는 로거를 생성함. , static 으로 한번 실행한거에서 계속 쓸 수 있게
 	public static void main(String[] args) {
-
+		
 		Scanner input = new Scanner(System.in); 
 
 		FamilyManager familyManager = new FamilyManager(input);	//새로운 객체 생성
 		
 		familyManager = getObject("Familymanager.ser");	//객체에 오브젝트를 넣어줌.
+	//	System.out.println("!!!"+familyManager);
 		if(familyManager == null ) {				//만약 그 오브젝트가 비어 있다면.
-//			System.out.println("fn :" + input);
+	//		System.out.println("fn :" + input);
 			familyManager = new FamilyManager(input);
-			selectMenu(input, familyManager);				
-			putObject(familyManager,"Familymanager.ser");
 		}
 		else{
 //			System.out.println("f1 :" +input);
-			familyManager = getObject("Familymanager.ser");
+//			familyManager = getObject("Familymanager.ser");
 			familyManager.setInput(input);
-			selectMenu(input, familyManager);					 // exception 포함.
-			putObject(familyManager,"Familymanager.ser");
 		}
+		
+		WindowFrame frame = new WindowFrame(familyManager);
+		selectMenu(input, familyManager);					 // exception 포함.
+	//	System.out.println("****f2: "+"1\n");
+		putObject(familyManager,"Familymanager.ser");
+	//	System.out.println("***End!!!**** "+"\n");
 	}
 
 	public static void selectMenu(Scanner input,FamilyManager familyManager) {
@@ -57,6 +61,10 @@ public class MenuManager {
 					logger.log("view a list of family");
 					break;
 				default:
+					if(num == 5) {
+					//	System.out.println("**********555*************");
+					//	break;
+					}
 					continue;
 				} 	
 			}catch(InputMismatchException e) {

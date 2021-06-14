@@ -23,6 +23,15 @@ public class FamilyManager implements Serializable {
 	}
 	ArrayList<FamilyInput> familys = new ArrayList<FamilyInput>(); //리스트로 여러명의 페밀리를 받을 공간을 만듦 
 	
+	public void addFamily(String Name, String Relation, String Birth, String Adress) {
+		FamilyInput familyInput = new SecondFamily(FamilyKind.SecondCousin);
+		familyInput.getUserInput(input);
+		familys.add(familyInput);
+	}
+	public void addFamily(FamilyInput familyInput) {
+		familys.add(familyInput);
+	}
+	
 	public void addFamily() {
 		int kind =-1;
 		FamilyInput familyInput;

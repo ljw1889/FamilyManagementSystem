@@ -1,5 +1,3 @@
-
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -15,7 +13,7 @@ public class WindowFrame extends JFrame {
 	public WindowFrame(FamilyManager familyManager) {
 		this.familyManager = familyManager;
 		this.menuselection = new MenuSelection(this);
-		this.familyadder = new FamilyAdder(this);
+		this.familyadder = new FamilyAdder(this,this.familyManager);
 		this.familyviewer = new FamilyViewer(this,this.familyManager);
 		this.setSize(500,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

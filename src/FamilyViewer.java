@@ -1,5 +1,3 @@
-
-
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -15,11 +13,41 @@ public class FamilyViewer extends JPanel {
 	WindowFrame frame;
 	FamilyManager familyManager;
 	
+	public FamilyManager getFamilyManager() {
+		return familyManager;
+	}
+
+	public void setFamilyManager(FamilyManager familyManager) {
+		this.familyManager = familyManager;
+		this.removeAll();
+		
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("Name");
+		model.addColumn("Relation");
+		model.addColumn("Birth");
+		model.addColumn("Adress");
+		
+		for (int i = 0 ; i <familyManager.size() ; i++) {
+			Vector row = new Vector();
+			FamilyInput fi = familyManager.get(i);
+			row.add(fi.getName());
+			row.add(fi.getRelation());
+			row.add(fi.getBirth());
+			row.add(fi.getAdress());
+			model.addRow(row);
+		}
+		 
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+		
+		this.add(sp);
+	}
+
 	public FamilyViewer(WindowFrame frame,FamilyManager familyManager) {
 		this.familyManager = familyManager;
 		this.frame = frame;
 		
-		System.out.println("*** 가족 수 size: "+familyManager.size());
+//		System.out.println("*** 가족 수 size: "+familyManager.size());
 		
 //		String column[] = {"Name","Relation","Birth","Adress"};
 		DefaultTableModel model = new DefaultTableModel();
@@ -42,7 +70,5 @@ public class FamilyViewer extends JPanel {
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
-
 	}
-
 }

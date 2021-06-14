@@ -1,5 +1,3 @@
-
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,8 +10,10 @@ import gui.SpringUtilities;
 public class FamilyAdder extends JPanel {
 	
 	WindowFrame frame;
+	FamilyManager familyManager;
 	
-	public FamilyAdder(WindowFrame frame) {
+	public FamilyAdder(WindowFrame frame,FamilyManager familyManager) {
+		this.familyManager = familyManager;
 		this.frame = frame;		
 		
 		JPanel panel = new JPanel(new SpringLayout());
@@ -43,8 +43,13 @@ public class FamilyAdder extends JPanel {
 		panel.add(labelAdress);
 		panel.add(fieldAdress);
 		
-		panel.add(new JButton("Save"));
-		panel.add(new JButton("Cancel"));
+		JButton saveButton = new JButton("Save");
+		saveButton.addActionListener(new FamilyAdderListener(fieldName,fieldRelation,fieldBirth,fieldAdress,familyManager));
+		JButton cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new FamilyAdderCancelListener(frame));
+		
+		panel.add(saveButton);
+		panel.add(cancelButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 5 , 2, 6, 6, 6, 6);
 		

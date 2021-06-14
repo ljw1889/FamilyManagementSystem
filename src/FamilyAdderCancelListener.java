@@ -3,11 +3,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class ButtonAddListener implements ActionListener {
+public class FamilyAdderCancelListener implements ActionListener {
 
 	WindowFrame frame;
 	
-	public ButtonAddListener(WindowFrame frame) {
+	public FamilyAdderCancelListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 
@@ -17,7 +17,7 @@ public class ButtonAddListener implements ActionListener {
 //		FamilyAdder adder = frame.getFamilyadder();
 //		frame.setupPanel(adder); 
 		frame.getContentPane().removeAll();
-		frame.getContentPane().add(frame.getFamilyadder());
+		frame.getContentPane().add(frame.getMenuselection());
 		frame.revalidate();
 		frame.repaint();
 	}
